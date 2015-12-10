@@ -29,3 +29,22 @@ function cameraCapture() {
    });
   }
 }
+
+function tileNotificationExpiration() {
+    var Notifications = Windows.UI.Notifications;
+    var tileXml = Notifications.TileUpdateManager.getTemplateContent(Notifications.TileTemplateType.tileWide310x150Text04);
+
+    var currentTime = new Date();
+    var seconds = 30;
+
+    var tileTextAttributes = tileXml.getElementsByTagName("text");
+    tileTextAttributes[0].appendChild(tileXml.createTextNode("This notification will expire at " + new Date(currentTime.getTime() + seconds * 1000)));
+
+    var tileNotification = new Notifications.TileNotification(tileXml);
+
+    // Set the expiration time on the notification
+    var expiryTime = new Date(currentTime.getTime() + seconds * 1000);
+
+    tileNotification.expirationTime = expiryTime;
+    Notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
+}
