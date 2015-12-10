@@ -17,3 +17,15 @@ function showToast () {
 function  systemAlertCommandInvokedHandler() {
   console.log ("OUTPUT: The " + command.label + " was selected");
 }
+
+function cameraCapture() {
+  if(typeof Windows != 'undefined') {
+   var captureUI = new Windows.Media.Capture.CameraCaptureUI();
+   //Set the format of the picture that's going to be captured (.png, .jpg, ...)
+   captureUI.photoSettings.format = Windows.Media.Capture.CameraCaptureUIPhotoFormat.png;
+   //Pop up the camera UI to take a picture
+   captureUI.captureFileAsync(Windows.Media.Capture.CameraCaptureUIMode.photo).then(function (capturedItem) {
+      // Do something with the picture
+   });
+  }
+}
