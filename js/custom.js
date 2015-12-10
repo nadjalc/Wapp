@@ -4,7 +4,7 @@ function showToast () {
      var template = notifications.ToastTemplateType.toastImageAndText01;
      var toastXml = notifications.ToastNotificationManager.getTemplateContent(template);
      var toastTextElements = toastXml.getElementsByTagName("text");
-     toastTextElements[0].appendChild(toastXml.createTextNode("Toast from Codepen"));
+     toastTextElements[0].appendChild(toastXml.createTextNode("Something happend :)"));
      var toastImageElements = toastXml.getElementsByTagName("image");
      toastImageElements[0].setAttribute("src", "http://assets.codepen.io/assets/social/facebook-default.png");
      toastImageElements[0].setAttribute("alt", "red graphic");
